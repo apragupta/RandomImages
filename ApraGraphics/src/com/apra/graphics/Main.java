@@ -11,6 +11,12 @@ public class Main {
 
 	public static void main(String[] args) throws IOException
 	{
+		for(int i=0;i<100;i++)
+			makeOne();
+	}
+
+
+	private static void makeOne() throws IOException {
 		int width=640;
 		int height=480;
 

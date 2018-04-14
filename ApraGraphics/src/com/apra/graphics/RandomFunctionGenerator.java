@@ -27,7 +27,7 @@ public class RandomFunctionGenerator implements Generator {
 	}
 	private int eval(int x, int y, int c) {
 		double d=func.mapNaN(funcs[c].eval(x, y));
-		return Math.max(0,Math.min((int)(d*255),255));
+		return (int)d;
 	}
 	int[] chans= new int[4];
 

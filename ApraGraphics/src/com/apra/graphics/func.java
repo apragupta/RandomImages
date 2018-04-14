@@ -55,7 +55,7 @@ class randScalarMult extends oneArgFunc {
 	double k;
 
 	randScalarMult() {
-		k = 100 * Math.random();
+		k = Math.random();
 	}
 
 	@Override
@@ -120,14 +120,25 @@ class twoArgFunc implements func {
 			return x - y;
 		case 2:
 			return x * y;
-		default:
+		case 3:
 			return x / y;
+		default:
+			return x*x+y*y;
+
 		}
 	}
 
 	@Override
 	public String prettyPrint() {
-		return type == 0 ? "add" : (type == 1 ? "sub" : (type == 2 ? "mult" : "div"));
+		switch(type)
+		{
+			case 0: return "add";
+			case 1: return "sub";
+			case 2: return "mult";
+			case 3: return "div";
+			default: return "circ";
+			
+		}
 	}
 }
 
@@ -161,7 +172,7 @@ class funcRegistry {
 	funcRegistry() {
 		for (int i = 0; i < 3; i++)
 			funcs.add(new trigFu(i));
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 			funcs.add(new twoArgFunc(i));
 	}
 
