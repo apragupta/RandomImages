@@ -25,11 +25,12 @@ public class Main {
 			}
 		}
 		image.setData(pixels);
-		ImageIO.write(image, "jpg", new File("out.jpg"));
+		String fileName= "out"+System.currentTimeMillis()+".jpg";
+		ImageIO.write(image, "jpg", new File(fileName));
 	}
 	
 
 	private static Generator createGen() {
-		return new SimpleGenerator();
+		return new RandomFunctionGenerator();
 	}
 }
