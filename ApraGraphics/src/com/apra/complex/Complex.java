@@ -24,6 +24,9 @@ public class Complex {
     public double abs() {
         return Math.hypot(re, im);
     }
+    public double abs_sq() {
+        return re*re+im*im;
+    }
 
     // return angle/phase/argument, normalized to be between -pi and pi
     public double phase() {

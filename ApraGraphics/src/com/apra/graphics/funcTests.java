@@ -24,9 +24,19 @@ public class funcTests {
 	}
 	
 	@Test
-	public void testNan()
+	public void testJul()
 	{
-		//div(sin(5.11*,3.95*),mult(4.18*,7.81*))
+		int[] rgb;
+		rgb=JuliaFunc.heatMap(1023);
+		rgb=JuliaFunc.heatMap(511);
+		rgb=JuliaFunc.heatMap(255);
+		rgb=JuliaFunc.heatMap(127);
+		rgb=JuliaFunc.heatMap(63);
+		rgb=JuliaFunc.heatMap(31);
+		rgb=JuliaFunc.heatMap(15);
+		rgb=JuliaFunc.heatMap(7);
+		rgb=JuliaFunc.heatMap(3);
+		rgb=JuliaFunc.heatMap(1);
 		
 	}
 

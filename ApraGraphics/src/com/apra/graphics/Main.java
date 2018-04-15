@@ -46,6 +46,7 @@ public class Main {
 	
 
 	private static Generator createGen() {
-		return new RandomFunctionGenerator();
+		//return new RandomFunctionGenerator();
+		return new JuliaFunc();
 	}
 }
