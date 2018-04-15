@@ -4,6 +4,9 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
@@ -11,7 +14,12 @@ public class Main {
 
 	public static void main(String[] args) throws IOException
 	{
-		for(int i=0;i<100;i++)
+		try {
+			Files.createDirectory(Paths.get("out"));
+		} catch (FileAlreadyExistsException e) {
+			// no harm in ignoring this one
+		}
+		for(int i=0;i<10;i++)
 			makeOne();
 	}
 
@@ -31,8 +39,9 @@ public class Main {
 			}
 		}
 		image.setData(pixels);
-		String fileName= "out"+System.currentTimeMillis()+".jpg";
+		String fileName= "out/"+System.currentTimeMillis()+".jpg";
 		ImageIO.write(image, "jpg", new File(fileName));
+		System.out.println(fileName+" done");
 	}
 	
 

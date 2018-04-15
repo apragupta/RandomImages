@@ -11,7 +11,7 @@ public interface func {
 
 	static double mapNaN(double v) {
 		if (Double.isNaN(v))
-			return 0.0;
+			return 255;
 		return v;
 	}
 
@@ -22,6 +22,24 @@ public interface func {
 	static NumberFormat getFormatter() {
 		return new DecimalFormat("#0.00");
 	}
+}
+class noOP implements func {
+
+	@Override
+	public double eval(double x, double y) {
+		return 0;
+	}
+
+	@Override
+	public int getArgsCount() {
+		return 0;
+	}
+
+	@Override
+	public String prettyPrint() {
+		return "";
+	}
+	
 }
 
 abstract class oneArgFunc implements func {
@@ -99,9 +117,11 @@ class trigFu extends oneArgFunc {
 
 class twoArgFunc implements func {
 	int type;
-
+	double a,b;
 	twoArgFunc(int type) {
 		this.type = type;
+		a=Math.random();
+		b=Math.random();
 	}
 
 	@Override
@@ -115,15 +135,15 @@ class twoArgFunc implements func {
 		y = func.mapNaN(y);
 		switch (type) {
 		case 0:
-			return x + y;
+			return a*x + b*y;
 		case 1:
-			return x - y;
+			return a*x - b*y;
 		case 2:
-			return x * y;
+			return a*x*y +b;
 		case 3:
-			return x / y;
+			return a*x/(y+.0001) +b;
 		default:
-			return x*x+y*y;
+			return a*x*x+b*y*y;
 
 		}
 	}
@@ -160,7 +180,17 @@ class compositeFunc implements func {
 
 	@Override
 	public String prettyPrint() {
-		return myF.prettyPrint() + "(" + xF.prettyPrint() + "," + yF.prettyPrint() + ")";
+		StringBuilder sb = new StringBuilder();
+		sb.append(myF.prettyPrint())
+		.append("(")
+		.append(xF.prettyPrint());
+		
+		if(myF.getArgsCount()==2)
+		{
+			sb.append(",").append(yF.prettyPrint());
+		}
+		sb.append(")");
+		return  sb.toString();
 	}
 
 }
@@ -203,6 +233,11 @@ class funcRegistry {
 			top.xF = buildLayer(depth);
 			top.yF = buildLayer(depth);
 		}
+		if(top.myF.getArgsCount()==1)
+		{
+			top.yF= new noOP();
+		}
+		
 		return top;
 	}
 }
