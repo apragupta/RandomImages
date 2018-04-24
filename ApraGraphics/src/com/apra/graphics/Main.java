@@ -19,17 +19,17 @@ public class Main {
 		} catch (FileAlreadyExistsException e) {
 			// no harm in ignoring this one
 		}
-		for(int i=0;i<10;i++)
+		for(int i=0;i<100;i++)
 			makeOne();
 	}
 
 
 	private static void makeOne() throws IOException {
-		int width=640;
-		int height=480;
+		int width=800;
+		int height=600;
 
 		Generator gen = createGen();
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         WritableRaster pixels = (WritableRaster) image.getData();
 		for(int i=0;i<width;i++)
 		{
@@ -39,14 +39,16 @@ public class Main {
 			}
 		}
 		image.setData(pixels);
-		String fileName= "out/"+System.currentTimeMillis()+".jpg";
-		ImageIO.write(image, "jpg", new File(fileName));
+		//creatcirc change alpha channel
+		String fileName= "out/"+System.currentTimeMillis()+".png";
+		ImageIO.write(image, "png", new File(fileName));
 		System.out.println(fileName+" done");
 	}
 	
 
 	private static Generator createGen() {
-		//return new RandomFunctionGenerator();
-		return new JuliaFunc();
+		return new RandomFunctionGenerator();
+		//return new JuliaFunc();
+	  //return new SimpleGenerator();
 	}
 }
