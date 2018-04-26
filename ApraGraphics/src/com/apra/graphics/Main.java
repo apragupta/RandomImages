@@ -22,7 +22,7 @@ public class Main {
 		} catch (FileAlreadyExistsException e) {
 			// no harm in ignoring this one
 		}
-		for(int i=0;i<100;i++)
+		for(int i=0;i<500;i++)
 			makeOne();
 	}
 
@@ -45,10 +45,8 @@ public class Main {
 			}
 		}
 		var_calc.done();
-		if(!var_calc.isTooDark()) 
+		if(!var_calc.isTooDark() && !var_calc.isTooFlat()) 
 		{
-			if(var_calc.isTooFlat()) 
-				System.out.print("* too flat * "); //let's visually anlyze and tune this 
 		
 			image.setData(pixels);
 			String fileName= "out/"+System.currentTimeMillis()+".png";

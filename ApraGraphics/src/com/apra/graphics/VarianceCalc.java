@@ -67,7 +67,7 @@ public class VarianceCalc {
 	}
 	public boolean isTooFlat()
 	{
-		return ( variances[0]+variances[1]+variances[2] < 25);
+		return ( variances[0]+variances[1]+variances[2] < 50);
 	}
 
 

@@ -71,6 +71,24 @@ class ident extends oneArgFunc {
   }
 }
 
+
+//log10
+
+/*class log10 extends oneArgFunc {
+  @Override
+  protected double myEval(double eval) {
+    return func.mapNaN(Math.log10(eval));
+  }
+
+  @Override
+  public String prettyPrint() {
+    return "log10" ;
+  }
+}*/
+
+
+
+
 class randScalarMult extends oneArgFunc {
 
   double k;
@@ -101,7 +119,7 @@ class trigFu extends oneArgFunc {
   @Override
   protected double myEval(double a) {
     a = func.mapNaN(a);
-    double rads = (a * Math.PI) / 400;
+    double rads = (a * Math.PI) / 200;
     switch (type) {
     case 0:
       return Math.sin(rads);
@@ -125,8 +143,8 @@ class twoArgFunc implements func {
   twoArgFunc(int type) {
     this.type = type;
     //128 is half of scale(255)
-    a = 50*Math.random();
-    b = 50*Math.random();
+    a = 100*Math.random();
+    b = 100*Math.random();
   }
 
   @Override
@@ -231,7 +249,8 @@ class funcRegistry {
   
   
   public func build() {
-    return buildLayer(2);
+    Random r = new Random();
+    return buildLayer(2 + r.nextInt(2));
   }
 
   //building tree from top to bottom
