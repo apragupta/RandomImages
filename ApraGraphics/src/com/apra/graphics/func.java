@@ -101,7 +101,7 @@ class trigFu extends oneArgFunc {
   @Override
   protected double myEval(double a) {
     a = func.mapNaN(a);
-    double rads = (a * Math.PI) / 180;
+    double rads = (a * Math.PI) / 400;
     switch (type) {
     case 0:
       return Math.sin(rads);

@@ -18,7 +18,7 @@ public class RandomFunctionGenerator implements Generator {
 		for(int i=0;i<3;i++)
 		{
 			funcs[i]=reg.build();
-		   //System.out.println(funcs[i].prettyPrint());
+		   System.out.println(funcs[i].prettyPrint());
 		}
 		//randomly replace one chanel with a mandelbrot
 		if(doMandleBrot)
@@ -30,6 +30,8 @@ public class RandomFunctionGenerator implements Generator {
 	@Override
 	public int[] getPixelValue(int x, int y) {
 		// TODO Auto-generated method stub
+	  
+	  
 		return eval(x,y);
 	}
 	private int[] eval(int x, int y) {
