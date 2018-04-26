@@ -22,7 +22,7 @@ public class Main {
 		} catch (FileAlreadyExistsException e) {
 			// no harm in ignoring this one
 		}
-		for(int i=0;i<500;i++)
+		for(int i=0;i<50;i++)
 			makeOne();
 	}
 

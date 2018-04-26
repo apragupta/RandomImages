@@ -72,19 +72,17 @@ class ident extends oneArgFunc {
 }
 
 
-//log10
-
-/*class log10 extends oneArgFunc {
+class log10 extends oneArgFunc {
   @Override
   protected double myEval(double eval) {
-    return func.mapNaN(Math.log10(eval));
+    return func.mapNaN(Math.log10(Math.abs(eval)));
   }
 
   @Override
   public String prettyPrint() {
     return "log10" ;
   }
-}*/
+}
 
 
 
@@ -231,6 +229,8 @@ class funcRegistry {
       funcs.add(new trigFu(i));
     for (int i = 0; i < 5; i++)
       funcs.add(new twoArgFunc(i));
+    
+    funcs.add(new log10());
   }
 
   func pickRandom() {
