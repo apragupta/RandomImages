@@ -259,7 +259,7 @@ class funcRegistry {
     top.myF = pickRandom();
     depth--;
     if (depth == 0) {
-      top.xF = new randScalarMult();
+      top.xF = new JuliaFunc();//new randScalarMult();
       top.yF = new randScalarMult();
     }
     else {

@@ -7,7 +7,7 @@ import com.apra.complex.Complex;
  * @author Apra G.
  *
  */
-public class JuliaFunc implements Generator{
+public class JuliaFunc implements Generator,func{
 	Complex c;
 	int max = 255;
 	JuliaFunc(){
@@ -38,8 +38,22 @@ public class JuliaFunc implements Generator{
          int v=jul(new Complex(x0, y0));
          return heatMap(1023-v);
 	}
-//	@Override
-//	public int[] getPixelValue(int x, int y) {
-//		return heatMap(x);
-//	}
+
+	@Override
+	public double eval(double x, double y) {
+	   double x0 = x*3.5/640.0 -2.5;
+       double y0 = y/240.0 -1.0;
+       int v=jul(new Complex(x0, y0));
+	   return v/4;
+	}
+
+	@Override
+	public int getArgsCount() {
+		return 0;
+	}
+
+	@Override
+	public String prettyPrint() {
+		return "J";
+	}
 }

@@ -1,7 +1,5 @@
 package com.apra.graphics;
 
-import java.util.Random;
-
 public class RandomFunctionGenerator implements Generator {
 	boolean doMandleBrot=false;
 	func[] funcs;
@@ -18,6 +16,7 @@ public class RandomFunctionGenerator implements Generator {
 		for(int i=0;i<3;i++)
 		{
 			funcs[i]=reg.build();
+			
 		   System.out.println(funcs[i].prettyPrint());
 		}
 		//randomly replace one chanel with a mandelbrot
